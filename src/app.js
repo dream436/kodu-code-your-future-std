@@ -48,7 +48,6 @@ app.post('/student_data', async (req, res) => {
 
 app.get('/admin',(req,res)=>{
     res.render('admin')
-
     
 })
 
