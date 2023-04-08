@@ -73,6 +73,12 @@ app.get('/all',(req,res)=>{
     })
 })
 
+app.get('/student_data',(req,res)=>{
+
+    
+
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on  http://localhost:${port}`)
 })

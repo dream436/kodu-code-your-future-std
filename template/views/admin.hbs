@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="style.css">
 
+
 </head>
 
 <body class="" style="overflow-x: hidden;">
@@ -91,78 +92,52 @@
         </section>
     </main>
 
+
     <script>
-        if (window.location.href == "https://kodu-code-your-future-std.onrender.com/admin") {
-            fetch('https://kodu-code-your-future-std.onrender.com//all', { mode: "no-cors" }).then(res => {
-                return res.json();
-                console.log(res)
-            }).then(data => {
-                console.log(data);
-
-                data.forEach(student => {
-                    let tab = document.getElementById('table1');
-
-                    let row = tab.insertRow(-1);
-
-                    let name = row.insertCell(0);
-                    let lastname = row.insertCell(1);
-                    let fathername = row.insertCell(2);
-                    let mothername = row.insertCell(3);
-                    let phone_number = row.insertCell(4);
-                    let address = row.insertCell(5);
-                    let campus = row.insertCell(6);
-                    let action = row.insertCell(7)
 
 
+        var myInit = {
+            method : 'get',
+            headers : {
 
-                    name.innerText = student.name
-                    lastname.innerText = student.lastname
-                    fathername.innerText = student.fathername
-                    mothername.innerText = student.mothername
-                    address.innerText = student.address
-                    phone_number.innerText = student.phone
-                    campus.innerText = student.campus
-                    action.innerHTML = `<a href="${student.id}">Show More</a>`
+                'Content-Type' : 'application/json' 
+            },
+            mode : 'no-cors',
+            caches : 'default'
+        } 
+        fetch('https://www.koduapp-admin.com/all', myInit).then(res => res.json()
+          
+        ).then(data => {
+            console.log(data);
+
+            data.forEach(student => {
+                let tab = document.getElementById('table1');
+
+                let row = tab.insertRow(-1);
+
+                let name = row.insertCell(0);
+                let lastname = row.insertCell(1);
+                let fathername = row.insertCell(2);
+                let mothername = row.insertCell(3);
+                let phone_number = row.insertCell(4);
+                let address = row.insertCell(5);
+                let campus = row.insertCell(6);
+                let action = row.insertCell(7)
 
 
-                })
+
+                name.innerText = student.name
+                lastname.innerText = student.lastname
+                fathername.innerText = student.fathername
+                mothername.innerText = student.mothername
+                address.innerText = student.address
+                phone_number.innerText = student.phone
+                campus.innerText = student.campus
+                action.innerHTML = `<a href="${student.id}"><i class="fa-solid fa-eye"></i></a>`
+
+
             })
-        } else {
-            fetch('https://www.koduapp-admin.com/all', { mode: "no-cors" }).then(res => {
-                return res.json();
-                console.log(res)
-            }).then(data => {
-                console.log(data);
-
-                data.forEach(student => {
-                    let tab = document.getElementById('table1');
-
-                    let row = tab.insertRow(-1);
-
-                    let name = row.insertCell(0);
-                    let lastname = row.insertCell(1);
-                    let fathername = row.insertCell(2);
-                    let mothername = row.insertCell(3);
-                    let phone_number = row.insertCell(4);
-                    let address = row.insertCell(5);
-                    let campus = row.insertCell(6);
-                    let action = row.insertCell(7)
-
-
-
-                    name.innerText = student.name
-                    lastname.innerText = student.lastname
-                    fathername.innerText = student.fathername
-                    mothername.innerText = student.mothername
-                    address.innerText = student.address
-                    phone_number.innerText = student.phone
-                    campus.innerText = student.campus
-                    action.innerHTML = `<a href="${student.id}">Show More</a>`
-
-
-                })
-            })
-        }
+        })
     </script>
 </body>
 
