@@ -20,10 +20,11 @@
     var url = "http://localhost:"+port+"/student_data/"+id
     console.log(url)
     
+    async function getdata(){
+        let result = await fetch(url)
+        console.log(result.json())
+    }
 
-
-    fetch(url).then(res=>{
-        console.log(res.json())
-    })
+    getdata()
 </script>
 </html>

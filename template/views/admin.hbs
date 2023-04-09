@@ -101,7 +101,7 @@
         const getUrl = 'http://localhost:'+port+'/all'
  
         const idurl = 'http://localhost:'+port+'/all'
-        fetch(getUrl).then(res => {
+        fetch(getUrl ,{mode:"no-cors"}).then(res => {
            
             let sdata = res.json()
 
