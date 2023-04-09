@@ -96,10 +96,10 @@
     <script>
  
 
-        const port = window.location.port
+        const getUrl = window.location.origin+'/all'
 
-       
-        fetch('https://www.koduapp-admin.com/all',{mode:"no-cors"}).then(res => {
+        console.log(getUrl)
+        fetch(getUrl ,{mode:"no-cors"}).then(res => {
            
             let sdata = res.json()
 
@@ -132,7 +132,7 @@
                 address.innerText = student.address
                 phone_number.innerText = student.phone
                 campus.innerText = student.campus
-                action.innerHTML = `<a href="http://localhost:${port}/student/?id=${student._id}"><i class="fa-solid fa-eye"></i></a>`
+                action.innerHTML = `<a href="${window.location.origin/student/?id=${student._id}"><i class="fa-solid fa-eye"></i></a>`
             })
         })
     </script>
