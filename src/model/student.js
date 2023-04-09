@@ -31,7 +31,7 @@ const sudentSchema = new mongoose.Schema({
     campus:{
         type : String,
     }
-})
+},{timestamps: true})
 
 
 const student = new mongoose.model('studentcollection', sudentSchema);

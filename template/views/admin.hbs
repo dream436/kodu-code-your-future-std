@@ -94,17 +94,11 @@
 
 
     <script>
-
-
-        var myInit = {
-            method : 'get',
-           
-            mode : 'no-cors',
-            caches : 'default'
-        } 
-        fetch('https://www.koduapp-admin.com/all', myInit).then(res => res.json()
+ 
+        fetch('https://kodu-code-your-future-std.onrender.com/all', { mode: "no-cors" }).then(res => {
+            return res.json();
           
-        ).then(data => {
+        }).then(data => {
             console.log(data);
 
             data.forEach(student => {
@@ -130,9 +124,7 @@
                 address.innerText = student.address
                 phone_number.innerText = student.phone
                 campus.innerText = student.campus
-                action.innerHTML = `<a href="${student.id}"><i class="fa-solid fa-eye"></i></a>`
-
-
+                action.innerHTML = `<a href="https://kodu-code-your-future-std.onrender.com//student_data/?${student._id}"><i class="fa-solid fa-eye"></i></a>`
             })
         })
     </script>

@@ -73,10 +73,9 @@ app.get('/all',(req,res)=>{
     })
 })
 
-app.get('/student_data',(req,res)=>{
-
-    
-
+app.get('/student_data/:id',(req,res)=>{
+    const id = req.params.id
+        res.send(id)
 })
 
 app.listen(port, () => {
