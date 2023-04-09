@@ -5,8 +5,8 @@ const mongoose = require('mongoose')
 const Mongo_url = process.env.MONGO_URL
 
 mongoose.connect(Mongo_url, {
-   useNewUrlParser: true,
-   useUnifiedTopology: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 })
 .then(()=>{
     console.log('connected to database')

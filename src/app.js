@@ -40,7 +40,7 @@ app.post('/student_data', async (req, res) => {
         })
 
         const postData = await sdata.save();
-        res.render('index')
+        res.redirect('index')
     } catch (error) {
         res.render('error')
     }
@@ -64,6 +64,10 @@ app.get('/login',(req,res)=>{
 })
 
 
+app.get('/student/?',(req,res)=>{
+    res.render('single_student')
+})
+
 
 app.get('/all',(req,res)=>{
     student.find().then((result)=>{
@@ -73,10 +77,18 @@ app.get('/all',(req,res)=>{
     })
 })
 
+
+
+
 app.get('/student_data/:id',(req,res)=>{
     const id = req.params.id
-        res.send(id)
+
+    student.findById(id).then((result)=>{
+        res.send(result)
+    })
 })
+
+
 
 app.listen(port, () => {
     console.log(`Example app listening on  http://localhost:${port}`)

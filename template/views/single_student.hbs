@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kodu</title>
+</head>
+<body>
+    student detail 
+    <span id="name"></span>
+</body>
+
+<script>
+    var name = document.getElementById('name')
+    let urlpaen = window.location.search
+    const param = new URLSearchParams(urlpaen)
+    const id = param.get('id')
+    cons port = window.location.port
+    var url = "http://localhost:"+port+"/student_data/"+id
+    console.log(url)
+    
+
+
+    fetch(url).then(res => {
+           console.log(res)
+        })
+</script>
+</html>
