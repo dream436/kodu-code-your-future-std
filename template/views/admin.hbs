@@ -98,10 +98,8 @@
 
         const port = window.location.port
 
-        const getUrl = 'http://localhost:'+port+'/all'
- 
-        const idurl = 'http://localhost:'+port+'/all'
-        fetch(getUrl ,{mode:"no-cors"}).then(res => {
+       
+        fetch('https://www.koduapp-admin.com/all',{mode:"no-cors"}).then(res => {
            
             let sdata = res.json()
 
