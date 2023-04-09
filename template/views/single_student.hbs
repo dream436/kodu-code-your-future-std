@@ -16,14 +16,14 @@
     let urlpaen = window.location.search
     const param = new URLSearchParams(urlpaen)
     const id = param.get('id')
-    cons port = window.location.port
+    const port = window.location.port
     var url = "http://localhost:"+port+"/student_data/"+id
     console.log(url)
     
 
 
-    fetch(url).then(res => {
-           console.log(res)
-        })
+    fetch(url).then(res=>{
+        console.log(res.json())
+    })
 </script>
 </html>
