@@ -96,15 +96,18 @@
     <script>
  
 
-        const getUrl = window.location.origin+'/all'
+
+        const port = window.location.port
+
+        const getUrl = 'https://www.koduapp-admin.com'+'/all'
 
         console.log(getUrl)
-        fetch(getUrl ,{mode:"no-cors"}).then(res => {
+        fetch(  getUrl ,{mode:"no-cors"}).then(res => {
            
             let sdata = res.json()
 
             return sdata
-            {{!-- return res.json(); --}}
+           
           
         }).then(data => {
             console.log(data);
@@ -132,9 +135,32 @@
                 address.innerText = student.address
                 phone_number.innerText = student.phone
                 campus.innerText = student.campus
-                action.innerHTML = `<a href="${window.location.origin/student/?id=${student._id}"><i class="fa-solid fa-eye"></i></a>`
+                action.innerHTML = `<a href="${window.location.origin}/student/?id=${student._id}"><i class="fa-solid fa-eye"></i></a>`
             })
         })
+
+
+
+
+        
+  fetch(getUrl,{mode:"no-cors"})
+    .then(function (serverPromise) {
+      serverPromise.json()
+        .then(function (j) {
+
+          j.forEach(c => {
+        console.log(c)
+          })
+
+        })
+        .catch(function (e) {
+          console.log(e);
+
+        });
+    })
+    .catch(function (e) {
+      console.log(e);
+    });
     </script>
 </body>
 

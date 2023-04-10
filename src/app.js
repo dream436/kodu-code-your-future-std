@@ -7,6 +7,8 @@ const app = express()
 const port = process.env.PORT
 const path = require('path')
 const student = require('./model/student')
+
+const comment = require('./model/comments')
 const temp_path = path.join(__dirname, '../template/views')
 
 app.set('view engine', 'hbs')
@@ -49,8 +51,7 @@ app.post('/student_data', async (req, res) => {
 
 
 app.get('/admin',(req,res)=>{
-    res.render('admin')
-    
+    res.render('admin')    
 })
 
 
@@ -89,6 +90,33 @@ app.get('/student_data/:id',(req,res)=>{
 })
 
 
+
+app.post('/student_comments', async (req,res)=>{
+    
+ 
+    try {
+
+        const sdata = new comment({
+            sid: req.body.s_id,
+            scomment: req.body.s_comment
+        })
+
+        const postData = await sdata.save();
+        res.redirect(`/student/?id=${req.body.s_id}`)
+    } catch (error) {
+        res.render('error')
+    }
+
+
+})
+
+
+app.get('/comment_data/:id',(req,res)=>{
+    const id = req.params.id
+    comment.find({sid:id}).then((result)=>{
+        res.send(result)
+    })
+})
 
 app.listen(port, () => {
     console.log(`Example app listening on  http://localhost:${port}`)
