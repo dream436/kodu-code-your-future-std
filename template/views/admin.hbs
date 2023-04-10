@@ -140,27 +140,6 @@
         })
 
 
-
-
-        
-  fetch(getUrl,{mode:"no-cors"})
-    .then(function (serverPromise) {
-      serverPromise.json()
-        .then(function (j) {
-
-          j.forEach(c => {
-        console.log(c)
-          })
-
-        })
-        .catch(function (e) {
-          console.log(e);
-
-        });
-    })
-    .catch(function (e) {
-      console.log(e);
-    });
     </script>
 </body>
 
