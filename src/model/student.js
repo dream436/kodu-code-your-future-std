@@ -5,13 +5,6 @@ const sudentSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    lastname : {
-        type : String,
-        required : true
-    },
-    mothername : {
-        type : String,
-    },
     fathername : {
         type : String,
         required : true
@@ -30,6 +23,10 @@ const sudentSchema = new mongoose.Schema({
     },
     campus:{
         type : String,
+    },
+    category:{
+        type: String,
+        default : "prespect"
     }
 },{timestamps: true})
 

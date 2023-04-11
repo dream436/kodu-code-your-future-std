@@ -1,4 +1,3 @@
-//  console.log("hello deepasshi")
 require('dotenv').config();
 
 const mongoose = require('mongoose')
@@ -32,17 +31,18 @@ app.post('/student_data', async (req, res) => {
 
         const sdata = new student({
             name: req.body.firstname,
-            lastname: req.body.lastname,
-            mothername: req.body.mothername,
             fathername: req.body.fathername,
             address: req.body.address,
+            category : req.body.category,
             phone: req.body.phone_number,
             course: req.body.course,
             campus: req.body.campus
         })
 
+        console.log(req.body.category)
+
         const postData = await sdata.save();
-        res.redirect('index')
+        res.redirect('/')
     } catch (error) {
         res.render('error')
     }

@@ -356,8 +356,8 @@
                 <div class="widget-49-title-wrapper">
 
                   <div class="card-header no-border ms-3">
-                    <h5 class="card-title" id="name"></h5>
-                    <h5 class="card-title2 mx-3" id="lastname"></h5>
+                    <h5 class="card-title me-5" id="name"></h5>
+                    (<h6 class="card-title2" id="lastname"></h6>)
                   </div>
                 </div>
                 <ul class="widget-49-meeting-points W">
@@ -366,12 +366,6 @@
                       Father Name :
                     </span>
                     <li class="widget-49-meeting-item  mx-3" id="father_name"></li>
-                  </div>
-                  <div class="d-flex">
-                    <span>
-                      Mother Name :
-                    </span>
-                    <li class="widget-49-meeting-item mx-3" id="mother_name"><span></span></li>
                   </div>
                   <div class="d-flex">
                     <span>
@@ -441,9 +435,9 @@
   let urlpaen = window.location.search
   const param = new URLSearchParams(urlpaen)
   const id = param.get('id')
-  var url = "https://www.koduapp-admin.com" + "/student_data/" + id
+  var url = "http://localhost:3000" + "/student_data/" + id
 
-  var cUrl = "https://www.koduapp-admin.com" + "/comment_data/" + id
+  var cUrl = "https://localhost:3000" + "/comment_data/" + id
   console.log(url)
 
   fetch(url)
@@ -452,16 +446,12 @@
         .then(function (j) {
           console.log(j);
           document.getElementById('name').innerHTML = j.name
-          document.getElementById('lastname').innerHTML = j.lastname
           document.getElementById('father_name').innerHTML = j.fathername
-          document.getElementById('mother_name').innerHTML = j.mothername
+          document.getElementById('lastname').innerHTML = j.category
           document.getElementById('adrress').innerHTML = j.address
           document.getElementById('course').innerHTML = j.course
           document.getElementById('phone').innerHTML = j.phone
-
           document.getElementById('campus').innerHTML = j.campus
-
-
         })
         .catch(function (e) {
           console.log(e);
