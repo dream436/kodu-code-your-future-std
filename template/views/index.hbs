@@ -317,7 +317,7 @@
               </div>
               <div class="form-outline mb-3">
                 <label class="form-label" for="form3Example43">Phone Number <span class="text-danger">*</span></label>
-                <input type="text" min="10" max="10" id="form3Example43" pattern="(5000|([1-4]?[0-9]?[0-9]?[0-9]?))"
+                <input type="number" min="10" max="10" id="form3Example43" pattern="(5000|([1-4]?[0-9]?[0-9]?[0-9]?))"
                   class="form-control form-control-lg" name="phone_number" onkeypress="validatePhoneNumber()" />
 
               </div>
@@ -391,15 +391,16 @@
     function namecheck() {
       console.log('name')
       let name = document.getElementById('firstname').value
-      if (name === 'xyn' || name === 'xxx' ) {
+      console.log(name.length)
+      if (name === 'xyz' || name === 'xxx' || name.length <= 2 ) {
         document.getElementById('invalid').innerHTML = "Enter a valid name"
-      }else if(name.lenght <= 2){
-            document.getElementById('invalid').innerHTML = "Enter a valid name"
       }
       else{
         document.getElementById('invalid').innerHTML = ""
       }
     }
+
+   
   </script>
 </body>
 
