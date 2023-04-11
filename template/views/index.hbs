@@ -282,24 +282,27 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <div class="form-outline">
-                    <label class="form-label" for="form3Example1m">Full-name</label>
+                   <div>
+                     <label class="form-label" for="form3Example1m">Full-name <span class="text-danger">*</span></label>
                     <input oninput="namecheck()" type="text" id="firstname" class="form-control form-control-lg"
                       name="firstname" />
+                   </div>
+                    <span id="invalid" class="text-danger ms-2 py-3"></span>
 
                   </div>
                 </div>
                 <div class="col-md-6 mb-3">
                   <div class="form-outline">
                     
-                    <label class="form-label" for="form3Example1n1">Father's name</label>
+                    <label class="form-label" for="form3Example1n1">Father's name <span class="text-danger">*</span></label>
                     <input type="text" id="form3Example1n1" class="form-control form-control-lg" name="fathername" />
                   </div>
                 </div>
               </div>
               <div class="form-outline mb-3">
-                <label class="form-label" for="form3Example1n1">catogery</label>
+                <label class="form-label" for="form3Example1n1">catogery <span class="text-danger">*</span></label>
                 <select class="custom-select w-100 p-3 rounded border-0" name="category">
-                  <option name="deeep" value="deep"   selected>Prespect</option>
+                  <option value="Prespect"   selected>Prespect</option>
                   <option value="Not intrested" >Not intrested</option>
                   <option value="Followup" >Followup</option>
                   <option value="Admission" >Admission</option>
@@ -307,17 +310,14 @@
                   <option value="Intersted" >Intrested</option>
                 </select>
               </div>
-
               <div class="form-outline mb-3">
-                <label class="form-label" for="form3Example8">Address</label>
+                <label class="form-label" for="form3Example8">Address <span class="text-danger">*</span></label>
                 <input type="text" id="form3Example8" class="form-control form-control-lg" name="address" />
 
               </div>
-
-
               <div class="form-outline mb-3">
-                <label class="form-label" for="form3Example43">Phone Number</label>
-                <input type="number" minlength="10" maxlength="10" id="form3Example43"
+                <label class="form-label" for="form3Example43">Phone Number <span class="text-danger">*</span></label>
+                <input type="text" min="10" max="10" id="form3Example43" pattern="(5000|([1-4]?[0-9]?[0-9]?[0-9]?))"
                   class="form-control form-control-lg" name="phone_number" onkeypress="validatePhoneNumber()" />
 
               </div>
@@ -387,12 +387,17 @@
   </script>
 
   <script>
-    console.log('namecheck')
+   
     function namecheck() {
       console.log('name')
       let name = document.getElementById('firstname').value
-      if (name === 'xyn' || name === 'xxx' || name.length <= 2) {
-        alert('please enter a valid name')
+      if (name === 'xyn' || name === 'xxx' ) {
+        document.getElementById('invalid').innerHTML = "Enter a valid name"
+      }else if(name.lenght <= 2){
+            document.getElementById('invalid').innerHTML = "Enter a valid name"
+      }
+      else{
+        document.getElementById('invalid').innerHTML = ""
       }
     }
   </script>

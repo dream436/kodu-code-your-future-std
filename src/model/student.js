@@ -15,14 +15,13 @@ const sudentSchema = new mongoose.Schema({
     },
     phone:{
         type : Number,
-        required : true,
-        unique : true
+        required : true
     },
     course:{
-        type : String,
+        type : String
     },
     campus:{
-        type : String,
+        type : String
     },
     category:{
         type: String,
