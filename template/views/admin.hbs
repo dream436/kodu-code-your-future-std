@@ -309,17 +309,13 @@
                             <div>
                                 <div class="input-group">
                                     <div class="form-outline">
-                                        <input type="search" id="search" class="form-control outline-none" style="border-radius: 23px 1px 1px 23px; outline: none;"  placeholder="search"/>
-                                        
+                                        <input type="search" id="search" class="form-control" placeholder="search"  onkeyup="search()"/>
                                     </div>
-                                    <button type="button" class="btn btn-primary" style="border-radius: 1px 23px 24px 1px; width:56px;">
-                                        <i class="fas fa-search"></i>
-                                    </button>
                                 </div>
                             </div>
                             <div style="cursor: pointer;"><i class="fa-solid fa-download h5"></i></div>
                         </div>
-                        <table class="table table-striped table-light">
+                        <table class="table table-striped table-bordered table-light">
                             <thead>
                                 <tr class="text-capitalize">
 
@@ -329,7 +325,7 @@
                                     <th scope="col" class="text-capitalize">Phone Number</th>
                                     <th scope="col" class="text-capitalize">Address</th>
                                     <th scope="col" class="text-capitalize">Campus</th>
-                                    <th scope="col">
+                                    <th scope="col text-center">
                                         Action
                                     </th>
                                 </tr>
@@ -508,7 +504,7 @@
 
         const port = window.location.port
 
-        const getUrl = 'https://www.koduapp-admin.com' + '/all'
+        const getUrl = 'https://koduapp-admin.com' + '/all'
 
         console.log(getUrl)
         fetch(getUrl, { mode: "no-cors" }).then(res => {
@@ -535,16 +531,15 @@
                 let campus = row.insertCell(5);
                 let action = row.insertCell(6)
 
+                name.classList.add('name')
 
-
-                name.innerText = student.name
-
+                name.innerHTML = `<span>${student.name}</span`
                 fathername.innerText = student.fathername
                 catergory.innerText = student.category
                 address.innerText = student.address
                 phone_number.innerText = student.phone
                 campus.innerText = student.campus
-                action.innerHTML = `<a href="${window.location.origin}/student/?id=${student._id}"><i class="fa-solid fa-eye"></i></a>`
+                action.innerHTML = `<a href="${window.location.origin}/student/?id=${student._id}"><div class="text-center"><i class="fa-solid fa-eye"></i></div></a>`
             })
         })
 
@@ -552,11 +547,30 @@
     </script>
 
     <script>
-        $(document).ready(function () {
-            $('#action_menu_btn').click(function () {
-                $('.action_menu').toggle();
-            });
-        });
+        const search = () => {
+            const filterbox = document.getElementById('search').value.toUpperCase();
+            const table = document.getElementById('table1');
+            const tr = table.getElementsByTagName('tr');
+
+
+            for (var i =0 ; i <= tr.length ; i++){
+                let td = tr[i].getElementsByTagName('td')[0];
+
+
+                if(td){
+                    let textvalue = td.textContent || td.innerHTML ;
+
+
+                    if(textvalue.toUpperCase().indexOf(filterbox) > -1){
+
+                        tr[i].style.display = ""                        
+                    }
+                    else{
+                        tr[i].style.display = "none" 
+                    }
+                }
+            }
+        }
     </script>
 </body>
 
