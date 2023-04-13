@@ -25,7 +25,7 @@ const sudentSchema = new mongoose.Schema({
     },
     category:{
         type: String,
-        default : "prespect"
+        default : "Prospect"
     }
 },{timestamps: true})
 

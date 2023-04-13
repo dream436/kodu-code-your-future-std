@@ -337,94 +337,83 @@
     <img src="https://koduapp.com/wp-content/uploads/2022/12/KodU-Logo-PNG12.png" alt="" srcset="" class="w-25">
   </div>
 
-  <div>
-    <div class="text-center">
-      <span class="fw-bolder h2">
-        Student Data
-      </span>
-    </div>
-
+  <div class="d-flex justify-content-between mx-5">
     <div class="container">
-      <div class="d-flex justify-content-between mt-lg-5">
-
+      <div class="bg-light border-1 rounded-3" style="min-height: 83vh; ">
+        <div class="d-flex justify-content-between mx-5 pt-4">
+          <div>
+            <h2 id="name"></h2>
+          </div>
+          <div>
+            <select class="custom-select w-100  px-3 py-2 rounded border-0" name="category">
+                  <option id="category" selected></option>
+                  <option value="Prespect">Prospect</option>
+                  <option value="Not intrested" >Not intrested</option>
+                  <option value="Followup" >Followup</option>
+                  <option value="Admission" >Admission</option>
+                  <option value="Disqualified" >Disqualified</option>
+                  <option value="Intersted" >Intrested</option>
+                </select>
+          </div>
+        </div>
+        <div class="ms-5">
+          <div><b> Father-name :</b> <span id="father_name"></span></div>
+        </div>
+        <div class="ms-5">
+          <div><b> Address :</b> <span id="address"></span></div>
+        </div>
+        <div class="ms-5">
+          <div><b> Mobile Number :</b> <span id="mobile_number"></span></div>
+        </div>
+        <div class="ms-5">
+          <div><b> Course :</b> <span id="course"></span></div>
+        </div>
+        <div class="ms-5">
+          <div><b> Campus :</b> <span id="campus"></span></div>
+        </div>
 
         <div>
-          <div class="card card-margin">
-
-            <div class="card-body" style="width: 50vh; height: 40vh;">
-              <div class="widget-49">
-                <div class="widget-49-title-wrapper">
-
-                  <div class="card-header no-border ms-3">
-                    <h5 class="card-title me-5" id="name"></h5>
-                    (<h6 class="card-title2" id="lastname"></h6>)
-                  </div>
-                </div>
-                <ul class="widget-49-meeting-points W">
-                  <div class="d-flex">
-                    <span>
-                      Father Name :
-                    </span>
-                    <li class="widget-49-meeting-item  mx-3" id="father_name"></li>
-                  </div>
-                  <div class="d-flex">
-                    <span>
-                      Address :
-                    </span>
-                    <li class="widget-49-meeting-item mx-3" id="adrress"><span></span></li>
-                  </div>
-                  <div class="d-flex">
-                    <span>
-                      Phone Number :
-                    </span>
-                    <li class="widget-49-meeting-item mx-3" id="phone"><span></span></li>
-                  </div>
-                  <div class="d-flex">
-                    <span>
-                      Course :
-                    </span>
-                    <li class="widget-49-meeting-item mx-3" id="course"><span></span></li>
-                  </div>
-                  <div class="d-flex">
-                    <span>
-                      Campus :
-                    </span>
-                    <li class="widget-49-meeting-item mx-3" id="campus"><span></span></li>
-                  </div>
-                </ul>
-
+          <div class="d-flex justify-content-center mt-4 ">
+            <div class="bg-white w-75 p-4 rounded-2">
+              <div class="form-group">
+                <form action="">
+                  <label for="exampleFormControlTextarea1" class="my-3">Notes</label>
+                  <textarea class="form-control bg-light" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <button type="submit" class="btn btn-primary mt-3">+ Notes</button>
+                </form>
               </div>
             </div>
           </div>
         </div>
-        <div>
-          <div class="row d-flex justify-content-center">
-            <div class="col-md-auto col-lg-auto" style="width:90vh;">
-              <div class="card shadow-0 border" style="background-color: #f0f2f5;">
-                <div class="card-body p-4">
-                  <div class="form-outline mb-4">
-                    <form action="/student_comments" method="post">
-                      <input type="text" id="sid" class="form-control d-none" name="s_id"
-                        placeholder="Type comment..." />
-                      <input type="text" id="addANote" class="form-control" name="s_comment"
-                        placeholder="Type comment..." />
-                      <button type="submit" class="form-label btn btn-primary mt-2 " for="addANote"
-                        id="addnote"
-                        onclick="PostComment()">+ Add a
-                        note</button>
-                    </form>
-                  </div>
+      </div>
 
-                  <div id="commentbody">
-                   
-                  </div>
-                </div>
+    </div>
+    <div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-auto col-lg-auto" style="width:90vh;">
+          <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+            <div class="card-body p-4">
+              <div class="form-outline mb-4">
+                <form action="/student_comments" method="post">
+                  <input type="text" id="sid" class="form-control d-none" name="s_id" placeholder="Type comment..." />
+                  <input type="text" id="addANote" class="form-control" name="s_comment"
+                    placeholder="Type comment..." />
+                  <button type="submit" class="form-label btn btn-primary mt-2 " for="addANote" id="addnote"
+                    onclick="PostComment()">+ Add a
+                    note</button>
+                </form>
+              </div>
+
+              <div id="commentbody">
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  </div>
 
   </div>
 
@@ -444,17 +433,17 @@
     .then(function (serverPromise) {
       serverPromise.json()
         .then(function (j) {
-          console.log(j);
-          document.getElementById('name').innerHTML = j.name
+
+          document.title = j.name
+          document.getElementById('name').innerText = j.name
           document.getElementById('father_name').innerHTML = j.fathername
-          document.getElementById('lastname').innerHTML = j.category
-          document.getElementById('adrress').innerHTML = j.address
+          document.getElementById('address').innerHTML = j.address
+          document.getElementById('mobile_number').innerHTML = j.phone
           document.getElementById('course').innerHTML = j.course
-          document.getElementById('phone').innerHTML = j.phone
           document.getElementById('campus').innerHTML = j.campus
+          document.getElementById('category').innerHTML = j.category
         })
         .catch(function (e) {
-          console.log(e);
         });
     })
     .catch(function (e) {
@@ -464,7 +453,7 @@
 
 
 
-  
+
   document.getElementById('sid').value = id
 
 
@@ -478,14 +467,24 @@
           j.forEach(c => {
 
 
+
+
             let mainbody = document.getElementById("commentbody")
             let cdiv = document.createElement('div')
             let odiv = document.createElement('div')
             let p = document.createElement('p')
             let cmt = document.createTextNode(c.scomment)
-             cdiv.classList.add('card', 'mb-4')
+            let spdate = document.createElement('span')
+            let d = new Date(c.createdAt)
+            let date = document.createTextNode(`${d.toLocaleTimeString()}   ${d.toLocaleDateString()}`)
+            cdiv.classList.add('card', 'mb-4')
             cdiv.classList.add('card-body', 'my-1')
+            spdate.style.fontSize = "12px"
+            spdate.style.color = "#938888"
+            spdate.classList.add('my-2')
+            spdate.appendChild(date)
             p.appendChild(cmt)
+            cdiv.appendChild(spdate)
             cdiv.appendChild(p)
             odiv.appendChild(cdiv)
             mainbody.appendChild(odiv)
@@ -494,7 +493,6 @@
         })
         .catch(function (e) {
           console.log(e);
-
         });
     })
     .catch(function (e) {

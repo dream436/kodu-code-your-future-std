@@ -49,7 +49,6 @@ app.post('/student_data', async (req, res) => {
 
 })
 
-
 app.get('/admin',(req,res)=>{
     res.render('admin')    
 })
@@ -90,7 +89,6 @@ app.get('/student_data/:id',(req,res)=>{
 })
 
 
-
 app.post('/student_comments', async (req,res)=>{
     
  
@@ -107,9 +105,25 @@ app.post('/student_comments', async (req,res)=>{
         res.render('error')
     }
 
-
 })
 
+app.post('/student_notes', async (req,res)=>{
+    
+ 
+    try {
+
+        const sdata = new comment({
+            sid: req.body.s_id,
+            snote: req.body.s_note
+        })
+
+        const postData = await sdata.save();
+        res.redirect(`/student/?id=${req.body.s_id}`)
+    } catch (error) {
+        res.render('error')
+    }
+
+})
 
 app.get('/comment_data/:id',(req,res)=>{
     const id = req.params.id

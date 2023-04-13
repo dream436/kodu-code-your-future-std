@@ -12,9 +12,6 @@
     <!-- fontawsome -->
     <script src="https://kit.fontawesome.com/d937303721.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="style.css">
-
-
 </head>
 
 <style>
@@ -306,11 +303,26 @@
                             <h3>
                                 Registered Students
                             </h3>
-                            <div>
+                            <div class="d-flex">
                                 <div class="input-group">
                                     <div class="form-outline">
-                                        <input type="search" id="search" class="form-control" placeholder="search"  onkeyup="search()"/>
+                                        <input type="search" id="search" class="form-control" placeholder="search"
+                                            onkeyup="search()" />
                                     </div>
+                                </div>
+                                <div>
+                                    <select class="form-select ms-4" style="width:7em;"
+                                        aria-label="Default select example" id="category-filter"
+                                        onchange="category_filter()">
+                                        <option selected value="1">All</option>
+                                        <option value="2">Prospect</option>
+                                        <option value="3">Admission</option>
+                                        <option value="4">Followup</option>
+                                        <option value="5">Not intrested</option>
+                                        <option value="6">Intrested</option>
+                                        <option value="7">Disqualified</option>
+
+                                    </select>
                                 </div>
                             </div>
                             <div style="cursor: pointer;"><i class="fa-solid fa-download h5"></i></div>
@@ -504,9 +516,7 @@
 
         const port = window.location.port
 
-        const getUrl = 'https://www.koduapp-admin.com' + '/all'
-
-        console.log(getUrl)
+        const getUrl = "https://www.koduapp-admin.com" + '/all'
         fetch(getUrl, { mode: "no-cors" }).then(res => {
 
             let sdata = res.json()
@@ -515,7 +525,6 @@
 
 
         }).then(data => {
-            console.log(data);
 
             data.forEach(student => {
                 let tab = document.getElementById('table1');
@@ -553,24 +562,62 @@
             const tr = table.getElementsByTagName('tr');
 
 
-            for (var i =0 ; i <= tr.length ; i++){
+            for (var i = 0; i <= tr.length; i++) {
                 let td = tr[i].getElementsByTagName('td')[0];
 
 
-                if(td){
-                    let textvalue = td.textContent || td.innerHTML ;
+                if (td) {
+                    let textvalue = td.textContent || td.innerHTML;
 
 
-                    if(textvalue.toUpperCase().indexOf(filterbox) > -1){
+                    if (textvalue.toUpperCase().indexOf(filterbox) > -1) {
 
-                        tr[i].style.display = ""                        
+                        tr[i].style.display = ""
                     }
-                    else{
-                        tr[i].style.display = "none" 
+                    else {
+                        tr[i].style.display = "none"
                     }
                 }
             }
         }
+    </script>
+    <script>
+        const category_filter = () => {
+            var e = document.getElementById("category-filter");
+            var value = e.value.toUpperCase();
+            var text = e.options[e.selectedIndex].text.toUpperCase();
+
+
+
+            const table = document.getElementById('table1');
+            const tr = table.getElementsByTagName('tr');
+            for (var i = 0; i <= tr.length; i++) {
+                let td = tr[i].getElementsByTagName('td')[2];
+
+
+                if (td) {
+                    let textvalue = td.textContent || td.innerHTML;
+
+
+                    if (textvalue.toUpperCase().indexOf(text) > -1) {
+                        console.log(text)
+                        tr[i].style.display = ""
+                    }
+                    else if (text == "ALL") {
+                        tr[i].style.display = ""
+                    }
+                    else {
+                        tr[i].style.display = "none"
+                        console.log(text)
+                    }
+
+
+
+                }
+            }
+
+
+        }       
     </script>
 </body>
 
